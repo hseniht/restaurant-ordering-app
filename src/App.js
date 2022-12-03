@@ -1,12 +1,14 @@
-import { Fragment } from "react";
 import "./App.css";
-import DrawerAppBar from "./components/Layout/Header";
+import Content from "./components/Layout/Body";
+import Layout from "./components/Layout/Layout";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./components/UI/palletes";
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <DrawerAppBar />
+      <Layout>
+        <Content/>
+      </Layout>
     </ThemeProvider>
   );
 }
