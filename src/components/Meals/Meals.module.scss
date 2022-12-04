@@ -1,0 +1,17 @@
+.summary {
+  margin: 0 auto;
+  width: 70%;
+  min-height: 100px;
+  padding: 20px;
+}
+
+.mealList {
+  list-style: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  &:last-child {
+    border: none;
+  }
+}
