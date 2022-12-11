@@ -3,6 +3,7 @@ import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { CartContext } from "../../contexts/cart-context";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -14,8 +15,10 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 export default function HeaderCart() {
+  //destructered context
+  const { ui } = React.useContext(CartContext);
   return (
-    <IconButton aria-label="cart">
+    <IconButton aria-label="cart" onClick={ui.handleShow}>
       <StyledBadge badgeContent={4} color="secondary">
         <ShoppingCartIcon />
       </StyledBadge>
