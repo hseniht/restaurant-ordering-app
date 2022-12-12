@@ -16,10 +16,16 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 export default function HeaderCart() {
   //destructered context
-  const { ui } = React.useContext(CartContext);
+  const { items, ui } = React.useContext(CartContext);
+
+  //in this case "reduce" can be used to get total amount from looping the items
+  //curNumber is result from previous execution
+  const numberOfCartItems = items.reduce((curNumber, item) => {
+    return curNumber + item.amount;
+  }, 0);
   return (
     <IconButton aria-label="cart" onClick={ui.handleShow}>
-      <StyledBadge badgeContent={4} color="secondary">
+      <StyledBadge badgeContent={numberOfCartItems} color="secondary">
         <ShoppingCartIcon />
       </StyledBadge>
     </IconButton>

@@ -1,10 +1,23 @@
+import { useContext } from "react";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import classes from "../Meals.module.scss";
 import MealItemForm from "./MealItemForm";
+import { CartContext } from "../../../contexts/cart-context";
 
 const MealItem = ({ id, name, description, price }) => {
+  const cartCtx = useContext(CartContext);
+
   const prices = `$${price.toFixed(2)}`;
+
+  const addToCartHandler = (amount) => {
+    cartCtx.addItem({
+      id,
+      name,
+      amount: amount,
+      price,
+    });
+  };
   return (
     <li className={classes.mealList}>
       <Stack direction="column">
@@ -21,7 +34,7 @@ const MealItem = ({ id, name, description, price }) => {
           {prices}
         </Typography>
       </Stack>
-      <MealItemForm id={id} />
+      <MealItemForm id={id} onAddToCart={addToCartHandler} />
     </li>
   );
 };
