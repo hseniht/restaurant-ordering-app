@@ -21,7 +21,6 @@ const MealItemForm = ({ id, onAddToCart }) => {
       setAmountIsValid(false);
       return;
     }
-    console.log("tk ref", amountInputRef.current.value);
     onAddToCart(enteredAmountNumber);
   };
 
