@@ -16,8 +16,27 @@ const defaultCartState = {
 
 const cartReducer = (state, action) => {
   if (action.type === "ADD") {
-    //add to state
-    const updatedItems = state.items.concat(action.item);
+    //find existing item index
+    const existingCartItemIndex = state.items.findIndex(
+      (item) => item.id === action.item.id
+    );
+    const existingCartItem = state.items[existingCartItemIndex];
+    let updatedItems;
+
+    if (existingCartItem) {
+      const updatedItem = {
+        ...existingCartItem,
+        amount: existingCartItem.amount + action.item.amount,
+      };
+      //create new (immutabily update an item)
+      updatedItems = [...state.items];
+      //pick and override current item in index
+      updatedItems[existingCartItemIndex] = updatedItem;
+    } else {
+      //this is normally when adding new (first time)
+      updatedItems = state.items.concat(action.item);
+    }
+
     const itemsPrice = action.item.price * action.item.amount;
     //total up
     const updatedTotalAmount = state.totalAmount + itemsPrice;
