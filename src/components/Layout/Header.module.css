@@ -24,3 +24,42 @@
   width: 110%;
   height: 100%;
 }
+
+/* animations */
+.ease-in-out {
+  animation: grow 4s ease-in-out infinite;
+}
+
+@keyframes grow {
+  0% {
+    font-size: 2em;
+  }
+  50% {
+    font-size: 6em;
+  }
+  100% {
+    font-size: 2em;
+  }
+}
+
+.bump {
+  animation: bump 300ms ease-out;
+}
+
+@keyframes bump {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.9);
+  }
+  30% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
