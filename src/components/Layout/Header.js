@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import HeaderCart from "./HeaderCart";
 const Header = (props) => {
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box className="app-header" sx={{ display: "flex" }}>
       <AppBar component="nav" color="salsa">
         <Toolbar>
           <Typography
