@@ -1,6 +1,7 @@
 import { DUMMY_MEALS } from "./dummy-meals";
 import Card from "@mui/material/Card";
 import MealItem from "./MealItem/MealItem";
+import classes from "./Meals.module.scss";
 
 const AvailableMeals = () => {
   const mealsList = DUMMY_MEALS.map((meal) => (
@@ -15,7 +16,7 @@ const AvailableMeals = () => {
   return (
     <section>
       <Card>
-        <ul>{mealsList}</ul>
+        <ul className={classes["meals-menu"]}>{mealsList}</ul>
       </Card>
     </section>
   );

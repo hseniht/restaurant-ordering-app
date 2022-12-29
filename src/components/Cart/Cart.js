@@ -35,19 +35,22 @@ const Cart = (props) => {
   return (
     cartCtx.ui.showCart && (
       <Modal onClose={cartCtx.ui.handleHide}>
-        <div className="cart-item">some item here</div>
-        <br />
-        {cartItems}
-        <div className="cart-total">
-          <span>Total amount</span>
-          <span>{totalAmount}</span>
+        <div className="cart-item">
+          <h1>Cart summary</h1>
         </div>
-        <div className="cart-action">
+        {cartItems}
+        <div className={classes["cart-total"]}>
+          <h3>Total amount: </h3>
+          <h3>{totalAmount}</h3>
+        </div>
+        <br />
+        <div className="cart-action" style={{ textAlign: "right" }}>
           <Button
             onClick={cartCtx.ui.handleHide}
             aria-label="add"
             variant="outlined"
             color="salsa"
+            sx={{ marginRight: "1em" }}
           >
             Close
           </Button>

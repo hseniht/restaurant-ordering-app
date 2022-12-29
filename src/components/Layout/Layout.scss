@@ -7,6 +7,11 @@
   width: 100%;
 }
 
+[class^="side-bg"] {
+  height: 80%;
+  max-width: 50%;
+}
+
 main {
   position: relative;
 }

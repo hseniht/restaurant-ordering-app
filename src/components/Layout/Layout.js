@@ -8,8 +8,8 @@ import "./Layout.scss";
 const MainBackground = ({ className }) => {
   return (
     <div className={className}>
-      <img src={bgLeft} />
-      <img src={bgRight} />
+      <img className="side-bg__left" src={bgLeft} />
+      <img className="side-bg__right" src={bgRight} />
     </div>
   );
 };
@@ -24,7 +24,7 @@ const Layout = ({ children, ...props }) => {
         component="main"
         sx={{ p: 3, mx: "auto", my: 8 }}
       >
-        <Toolbar />
+        {/* <Toolbar /> no longer need this empty space hack from MUI*/}
         {children}
       </Box>
     </Box>

@@ -1,10 +1,13 @@
 .summary {
-  margin: 0 auto;
+  margin: 2em auto;
   width: 70%;
   min-height: 100px;
   padding: 20px;
 }
-
+.meals-menu {
+  padding: 2em;
+  margin: 0;
+}
 .mealList {
   list-style: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.16);
@@ -14,4 +17,9 @@
   &:last-child {
     border: none;
   }
+}
+
+.amount-form {
+  display: flex;
+  align-items: center;
 }

@@ -20,6 +20,12 @@
   color: #363636;
 }
 
+.cart-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .summary {
   width: 10rem;
   display: flex;
