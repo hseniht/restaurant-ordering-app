@@ -18,6 +18,14 @@
     border: none;
   }
 }
+.mealsLoader {
+  text-align: center;
+  font-size: 2rem;
+}
+.mealsError {
+  text-align: center;
+  color: red;
+}
 
 .amount-form {
   display: flex;

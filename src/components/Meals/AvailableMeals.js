@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [httpError, setHTTPError] = useState();
 
   useEffect(() => {
     const fetchMeals = async () => {
@@ -25,12 +27,31 @@ const AvailableMeals = () => {
           price: responseData[key].price,
         });
       }
-      console.log("tk meals", loadedMeals);
       setMeals(loadedMeals);
+      setIsLoading(false);
     };
 
-    fetchMeals();
+    fetchMeals().catch((error) => {
+      setIsLoading(false);
+      setHTTPError(error.message); //message we defined at the "throw" statement
+    });
   }, []);
+
+  if (isLoading) {
+    return (
+      <section className={classes.mealsLoader}>
+        <p>Loading ...</p>
+      </section>
+    );
+  }
+
+  if (httpError) {
+    return (
+      <section className={classes.mealsError}>
+        <p>{httpError}</p>
+      </section>
+    );
+  }
 
   // todo: set fallback to dummy data for DEMO purpose
   // let mealsData = DUMMY_MEALS;
