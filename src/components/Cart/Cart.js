@@ -4,8 +4,10 @@ import { CartContext } from "../../contexts/cart-context";
 import Modal from "../UI/Modal";
 import CartItem from "./CartItem";
 import classes from "./Cart.module.css";
+import Checkout from "./Checkout";
 
 const Cart = (props) => {
+  const [isCheckout, setIsCheckout] = useState(false);
   const cartCtx = useContext(CartContext);
 
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
@@ -16,6 +18,15 @@ const Cart = (props) => {
   };
   const cartItemAddHandler = (item) => {
     cartCtx.addItem({ ...item, amount: 1 });
+  };
+
+  const orderHandler = () => {
+    setIsCheckout(true);
+  };
+
+  const cancelOrderHandler = () => {
+    setIsCheckout(false);
+    cartCtx.ui.handleHide();
   };
 
   const cartItems = (
@@ -32,6 +43,31 @@ const Cart = (props) => {
       ))}
     </ul>
   );
+
+  const modalActions = (
+    <div className="cart-action" style={{ textAlign: "right" }}>
+      <Button
+        onClick={cartCtx.ui.handleHide}
+        aria-label="add"
+        variant="outlined"
+        color="salsa"
+        sx={{ marginRight: "1em" }}
+      >
+        Close
+      </Button>
+      {hasItems && (
+        <Button
+          onClick={orderHandler}
+          aria-label="add"
+          variant="contained"
+          color="salsa"
+        >
+          Order
+        </Button>
+      )}
+    </div>
+  );
+
   return (
     cartCtx.ui.showCart && (
       <Modal onClose={cartCtx.ui.handleHide}>
@@ -44,27 +80,8 @@ const Cart = (props) => {
           <h3>{totalAmount}</h3>
         </div>
         <br />
-        <div className="cart-action" style={{ textAlign: "right" }}>
-          <Button
-            onClick={cartCtx.ui.handleHide}
-            aria-label="add"
-            variant="outlined"
-            color="salsa"
-            sx={{ marginRight: "1em" }}
-          >
-            Close
-          </Button>
-          {hasItems && (
-            <Button
-              onClick={cartCtx.ui.handleShow}
-              aria-label="add"
-              variant="contained"
-              color="salsa"
-            >
-              Order
-            </Button>
-          )}
-        </div>
+        {isCheckout && <Checkout onCancel={cancelOrderHandler} />}
+        {!isCheckout && modalActions}
       </Modal>
     )
   );

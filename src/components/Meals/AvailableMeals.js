@@ -33,7 +33,7 @@ const AvailableMeals = () => {
 
     fetchMeals().catch((error) => {
       setIsLoading(false);
-      setHTTPError(error.message); //message we defined at the "throw" statement
+      setHTTPError(error.message);
     });
   }, []);
 
