@@ -45,6 +45,12 @@ const Checkout = (props) => {
     }
 
     //submit cart data
+    props.onConfirm({
+      name: name,
+      street: street,
+      city: city,
+      postal: postal,
+    });
   };
   return (
     <form onSubmit={confirmHandler}>
