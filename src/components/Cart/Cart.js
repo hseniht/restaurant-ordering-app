@@ -1,5 +1,5 @@
 import Button from "@mui/material/Button";
-import { useContext, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { CartContext } from "../../contexts/cart-context";
 import Modal from "../UI/Modal";
 import CartItem from "./CartItem";
@@ -8,6 +8,8 @@ import Checkout from "./Checkout";
 
 const Cart = (props) => {
   const [isCheckout, setIsCheckout] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [didSubmit, setDidSubmit] = useState(false);
   const cartCtx = useContext(CartContext);
 
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
@@ -44,8 +46,9 @@ const Cart = (props) => {
     </ul>
   );
 
-  const submitOrderHandler = (userData) => {
-    fetch(
+  const submitOrderHandler = async (userData) => {
+    setIsSubmitting(true);
+    await fetch(
       "https://react-http-480e0-default-rtdb.asia-southeast1.firebasedatabase.app/orders.json",
       {
         method: "POST",
@@ -55,6 +58,16 @@ const Cart = (props) => {
         }),
       }
     );
+    //todo: add error handling
+    setIsSubmitting(false);
+    setDidSubmit(true);
+    cartCtx.clearCart();
+  };
+
+  const closeCartHandler = () => {
+    cartCtx.ui.handleHide();
+    setIsCheckout(false);
+    setDidSubmit(false);
   };
 
   const modalActions = (
@@ -81,25 +94,49 @@ const Cart = (props) => {
     </div>
   );
 
+  const cartModalContent = (
+    <Fragment>
+      <div className="cart-item">
+        <h1>Cart summary</h1>
+      </div>
+      {cartItems}
+      <div className={classes["cart-total"]}>
+        <h3>Total amount: </h3>
+        <h3>{totalAmount}</h3>
+      </div>
+      <br />
+      {isCheckout && (
+        <Checkout
+          onConfirm={submitOrderHandler}
+          onCancel={cancelOrderHandler}
+        />
+      )}
+      {!isCheckout && modalActions}
+    </Fragment>
+  );
+
+  const submittingModalContent = <p>Sending order data...</p>;
+  const doneSubmittingModalContent = (
+    <Fragment>
+      <p>Succesfully set the order!</p>
+      <Button
+        onClick={closeCartHandler}
+        aria-label="add"
+        variant="outlined"
+        color="salsa"
+        sx={{ marginRight: "1em" }}
+      >
+        Close
+      </Button>
+    </Fragment>
+  );
+
   return (
     cartCtx.ui.showCart && (
-      <Modal onClose={cartCtx.ui.handleHide}>
-        <div className="cart-item">
-          <h1>Cart summary</h1>
-        </div>
-        {cartItems}
-        <div className={classes["cart-total"]}>
-          <h3>Total amount: </h3>
-          <h3>{totalAmount}</h3>
-        </div>
-        <br />
-        {isCheckout && (
-          <Checkout
-            onConfirm={submitOrderHandler}
-            onCancel={cancelOrderHandler}
-          />
-        )}
-        {!isCheckout && modalActions}
+      <Modal onClose={closeCartHandler}>
+        {!isSubmitting && !didSubmit && cartModalContent}
+        {isSubmitting && submittingModalContent}
+        {!isSubmitting && didSubmit && doneSubmittingModalContent}
       </Modal>
     )
   );
