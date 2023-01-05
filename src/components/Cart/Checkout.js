@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
+import classes from "./Cart.module.css";
 
 //helper
 const isEmpty = (value) => value.trim() === "";
@@ -53,84 +54,80 @@ const Checkout = (props) => {
     });
   };
   return (
-    <form onSubmit={confirmHandler}>
-      <div className="">
-        <Grid container spacing={3}>
-          <Grid item xs={6}>
-            <TextField
-              id="name"
-              label="Your name"
-              fullWidth
-              variant="standard"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              error={!inputsValidity.name}
-              helperText={!inputsValidity.name && "Please enter a valid name"}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              id="street"
-              label="Street"
-              value={street}
-              onChange={(e) => setStreet(e.target.value)}
-              fullWidth
-              variant="standard"
-              error={!inputsValidity.street}
-              helperText={
-                !inputsValidity.street && "Please enter a valid street"
-              }
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <TextField
-              id="postal"
-              label="Postal"
-              value={postal}
-              onChange={(e) => setPostal(e.target.value)}
-              fullWidth
-              variant="standard"
-              error={!inputsValidity.postal}
-              helperText={
-                !inputsValidity.postal &&
-                "Please enter a valid postcode (5 characters long!)"
-              }
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <TextField
-              id="city"
-              label="City"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              fullWidth
-              variant="standard"
-              error={!inputsValidity.city}
-              helperText={!inputsValidity.city && "Please enter a valid city"}
-            />
-          </Grid>
+    <form className={classes["user-details-form"]} onSubmit={confirmHandler}>
+      <Grid container spacing={3}>
+        <Grid item xs={6}>
+          <TextField
+            id="name"
+            label="Your name"
+            fullWidth
+            variant="standard"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            error={!inputsValidity.name}
+            helperText={!inputsValidity.name && "Please enter a valid name"}
+          />
         </Grid>
-        <br />
-        <div className="checkout-action" style={{ textAlign: "right" }}>
-          <Button
-            onClick={props.onCancel}
-            aria-label="add"
-            variant="outlined"
-            color="salsa"
-            sx={{ marginRight: "1em" }}
-          >
-            Cancel
-          </Button>
-          <Button
-            //   onClick={cartCtx.ui.handleShow}
-            aria-label="confirm"
-            variant="contained"
-            color="salsa"
-            type="submit"
-          >
-            Confirm
-          </Button>
-        </div>
+        <Grid item xs={12}>
+          <TextField
+            id="street"
+            label="Street"
+            value={street}
+            onChange={(e) => setStreet(e.target.value)}
+            fullWidth
+            variant="standard"
+            error={!inputsValidity.street}
+            helperText={!inputsValidity.street && "Please enter a valid street"}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <TextField
+            id="postal"
+            label="Postal"
+            value={postal}
+            onChange={(e) => setPostal(e.target.value)}
+            fullWidth
+            variant="standard"
+            error={!inputsValidity.postal}
+            helperText={
+              !inputsValidity.postal &&
+              "Please enter a valid postcode (5 characters long!)"
+            }
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <TextField
+            id="city"
+            label="City"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            fullWidth
+            variant="standard"
+            error={!inputsValidity.city}
+            helperText={!inputsValidity.city && "Please enter a valid city"}
+          />
+        </Grid>
+      </Grid>
+      <br />
+      <div className="checkout-action" style={{ textAlign: "right" }}>
+        <Button
+          onClick={props.onCancel}
+          aria-label="add"
+          variant="outlined"
+          color="salsa"
+          sx={{ marginRight: "1em" }}
+        >
+          Cancel
+        </Button>
+        <Button
+          //   onClick={cartCtx.ui.handleShow}
+          aria-label="confirm"
+          variant="contained"
+          color="salsa"
+          type="submit"
+        >
+          Confirm
+        </Button>
       </div>
     </form>
   );

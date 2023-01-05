@@ -30,9 +30,10 @@ const Cart = (props) => {
     setIsCheckout(false);
     cartCtx.ui.handleHide();
   };
-
+  // isCheckout ? classes["cart-items--shrinked"] : classes["cart-items"]
+  const cssShrinked = isCheckout ? { maxHeight: "35vh" } : null;
   const cartItems = (
-    <ul className={classes["cart-items"]}>
+    <ul className={classes["cart-items"]} style={cssShrinked}>
       {cartCtx.items.map((item) => (
         <CartItem
           key={item.id}
@@ -104,7 +105,6 @@ const Cart = (props) => {
         <h3>Total amount: </h3>
         <h3>{totalAmount}</h3>
       </div>
-      <br />
       {isCheckout && (
         <Checkout
           onConfirm={submitOrderHandler}

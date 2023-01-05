@@ -77,3 +77,8 @@
   background-color: #8a2b06;
   color: white;
 }
+
+.user-details-form {
+  max-height: 30vh;
+  overflow: auto;
+}
