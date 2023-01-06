@@ -13,13 +13,13 @@ export const DUMMY_MEALS = [
   },
   {
     id: "m3",
-    name: "Barbecue Burger",
+    name: "Double Cheese Burger",
     description: "American, raw, meaty",
     price: 12.99,
   },
   {
     id: "m4",
-    name: "Green Bowl",
+    name: "Caeser Salad",
     description: "Healthy...and green...",
     price: 18.99,
   },

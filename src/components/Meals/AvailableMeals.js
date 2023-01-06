@@ -2,7 +2,10 @@
 import Card from "@mui/material/Card";
 import MealItem from "./MealItem/MealItem";
 import classes from "./Meals.module.scss";
+import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
+import { DUMMY_MEALS } from "./dummy-meals";
+import RotateLeftIcon from "@mui/icons-material/RotateLeft";
 
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
@@ -37,27 +40,25 @@ const AvailableMeals = () => {
     });
   }, []);
 
-  if (isLoading) {
-    return (
-      <section className={classes.mealsLoader}>
-        <p>Loading ...</p>
-      </section>
-    );
-  }
+  const loadDummyData = () => {
+    setMeals(DUMMY_MEALS);
+  };
 
-  if (httpError) {
-    return (
-      <section className={classes.mealsError}>
-        <p>{httpError}</p>
-      </section>
-    );
-  }
+  const errorForm = (
+    <div className={classes.mealsError}>
+      <p style={{ color: "red" }}>{httpError}</p>
+      <p>Try again</p>
+      <Button
+        variant="contained"
+        onClick={loadDummyData}
+        endIcon={<RotateLeftIcon />}
+      >
+        Offline Mode
+      </Button>
+    </div>
+  );
 
-  // todo: set fallback to dummy data for DEMO purpose
-  // let mealsData = DUMMY_MEALS;
-  let mealsData = meals;
-
-  const mealsList = mealsData.map((meal) => (
+  const mealsList = meals.map((meal) => (
     <MealItem
       key={meal.id}
       id={meal.id}
@@ -66,6 +67,31 @@ const AvailableMeals = () => {
       price={meal.price}
     />
   ));
+
+  //if loading
+  if (isLoading) {
+    return (
+      <section className={classes.mealsLoader}>
+        <p>Loading ...</p>
+      </section>
+    );
+  }
+  //if encountered error
+  if (httpError) {
+    return (
+      <section>
+        {meals.length === 0 ? (
+          errorForm
+        ) : (
+          //fallback form
+          <Card>
+            <ul className={classes["meals-menu"]}>{mealsList}</ul>
+          </Card>
+        )}
+      </section>
+    );
+  }
+  //normal render
   return (
     <section>
       <Card>
