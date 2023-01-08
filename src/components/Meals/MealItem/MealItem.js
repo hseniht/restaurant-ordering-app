@@ -20,11 +20,18 @@ const MealItem = ({ id, name, description, price }) => {
   };
   return (
     <li className={classes.mealList}>
-      <Stack direction="column">
+      <Stack direction="column" alignItems="flex-start" sx={{ width: "70%" }}>
         <Typography variant="h5" component="div">
           {name}
         </Typography>
         <Typography variant="body2">{description}</Typography>
+      </Stack>
+      <Stack
+        direction="column"
+        justifyContent="space-between"
+        alignItems="flex-start"
+        // spacing={0}
+      >
         <Typography
           component="div"
           sx={{ fontWeight: "bold" }}
@@ -33,8 +40,8 @@ const MealItem = ({ id, name, description, price }) => {
         >
           {prices}
         </Typography>
+        <MealItemForm id={id} onAddToCart={addToCartHandler} />
       </Stack>
-      <MealItemForm id={id} onAddToCart={addToCartHandler} />
     </li>
   );
 };

@@ -6,13 +6,37 @@ import Box from "@mui/material/Box";
 import { TabPanel } from "../../UI/Tabs";
 import MealItem from "../MealItem/MealItem";
 import classes from "../Meals.module.scss";
+import Divider from "@mui/material/Divider";
+import KebabDiningOutlinedIcon from "@mui/icons-material/KebabDiningOutlined";
+import RestaurantMenuOutlinedIcon from "@mui/icons-material/RestaurantMenuOutlined";
+import IcecreamOutlinedIcon from "@mui/icons-material/IcecreamOutlined";
+import LocalCafeOutlinedIcon from "@mui/icons-material/LocalCafeOutlined";
+import { Stack } from "@mui/system";
+import { theme } from "../../UI/palletes";
+
+const ICON_APPETIZER = <KebabDiningOutlinedIcon />;
+const ICON_MAINS = <RestaurantMenuOutlinedIcon />;
+const ICON_DESSERTS = <IcecreamOutlinedIcon />;
+const ICON_DRINKS = <LocalCafeOutlinedIcon />;
+
+const green = theme.palette.salad.main;
 
 //menu items in one single poge
 export const SingleList = ({ items }) => {
+  return <ul className={classes["meals-menu"]}>{items}</ul>;
+};
+
+const MenuFrame = ({ title, icon, children }) => {
   return (
-    <Card>
-      <ul className={classes["meals-menu"]}>{items}</ul>
-    </Card>
+    <div className="menu-frame">
+      <Divider sx={{ color: green }}>
+        <Stack alignItems="center" spacing={0} justifyContent="space-around">
+          <h2 style={{ margin: 0 }}>{title}</h2>
+          {icon}
+        </Stack>
+      </Divider>
+      {children}
+    </div>
   );
 };
 
@@ -64,6 +88,12 @@ export default function TabbedMenu({ list }) {
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
+          textColor={"inherit"}
+          // textColor={theme.palette.salsa.main}
+          // indicatorColor="inherit"
+          TabIndicatorProps={{
+            style: { color: "red", backgroundColor: green },
+          }}
         >
           {/* <Tab label="Item One" {...a11yProps(0)} /> */}
           <Tab label="Appetizers" />
@@ -73,16 +103,24 @@ export default function TabbedMenu({ list }) {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <SingleList items={appetizerList} />
+        <MenuFrame title={"Appetizers"} icon={ICON_APPETIZER}>
+          <SingleList items={appetizerList} />
+        </MenuFrame>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <SingleList items={mainList} />
+        <MenuFrame title={"Mains"} icon={ICON_MAINS}>
+          <SingleList items={mainList} />
+        </MenuFrame>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <SingleList items={drinkList} />
+        <MenuFrame title={"Drinks"} icon={ICON_DRINKS}>
+          <SingleList items={drinkList} />
+        </MenuFrame>
       </TabPanel>{" "}
       <TabPanel value={value} index={3}>
-        <SingleList items={dessertList} />
+        <MenuFrame title={"Desserts"} icon={ICON_DESSERTS}>
+          <SingleList items={dessertList} />
+        </MenuFrame>
       </TabPanel>
     </Box>
   );

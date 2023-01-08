@@ -17,6 +17,10 @@ export const theme = createTheme({
       main: "#f44336",
       contrastText: "#fff",
     },
+    salad: {
+      main: "#16d76c",
+      contrastText: "#fff",
+    },
     // mode: "dark"
   },
 });
