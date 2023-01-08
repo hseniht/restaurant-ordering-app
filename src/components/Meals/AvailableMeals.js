@@ -1,11 +1,12 @@
 // import { DUMMY_MEALS } from "./dummy-meals";
-import Card from "@mui/material/Card";
 import MealItem from "./MealItem/MealItem";
 import classes from "./Meals.module.scss";
 import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
 import { DUMMY_MEALS } from "./dummy-meals";
 import RotateLeftIcon from "@mui/icons-material/RotateLeft";
+import { SingleList } from "./MealsMenu/MealsMenu";
+import TabbedMenu from "./MealsMenu/MealsMenu";
 
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
@@ -28,6 +29,7 @@ const AvailableMeals = () => {
           name: responseData[key].name,
           description: responseData[key].description,
           price: responseData[key].price,
+          type: responseData[key].type,
         });
       }
       setMeals(loadedMeals);
@@ -84,9 +86,8 @@ const AvailableMeals = () => {
           errorForm
         ) : (
           //fallback form
-          <Card>
-            <ul className={classes["meals-menu"]}>{mealsList}</ul>
-          </Card>
+          <TabbedMenu list={meals} />
+          // <SingleList items={mealsList} />
         )}
       </section>
     );
@@ -94,9 +95,8 @@ const AvailableMeals = () => {
   //normal render
   return (
     <section>
-      <Card>
-        <ul className={classes["meals-menu"]}>{mealsList}</ul>
-      </Card>
+      <TabbedMenu list={meals} />
+      {/* <SingleList items={mealsList} /> */}
     </section>
   );
 };
