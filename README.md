@@ -1,3 +1,36 @@
+# React Restaurant Ordering App with Firebase
+
+Welcome to our React restaurant ordering app! This app allows you to explore our menu and place orders, all while utilizing the power of Firebase for data management and authentication.
+
+
+
+## Features
+
+- Browse our delicious menu and place orders seamlessly.
+- Real-time updates keep you informed about the status of your orders.
+- Secure user authentication powered by Firebase. (WIP)
+- Smooth data storage and retrieval thanks to Firebase integration.
+- Responsive and user-friendly interface built with React.
+
+## Live Demo
+
+Check out the [Live Demo](link) to experience the app in action.
+
+## Tech Stack
+
+- Material-UI: React UI framework for designing responsive and attractive user interfaces.
+- React: JavaScript library for building user interfaces.
+- Firebase: Google's platform for backend services, including authentication and data storage.
+
+## Contributing
+
+We welcome contributions from the community! If you find any issues or have ideas for improvements, feel free to open an issue or submit a pull request. Check out our [Contribution Guidelines](link-to-contributing-guide) for more information.
+
+## License
+
+This project is licensed under the [MIT License]
+
+-------------------------------------------
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
