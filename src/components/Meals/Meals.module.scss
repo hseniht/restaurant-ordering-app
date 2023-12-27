@@ -8,7 +8,10 @@
   max-width: 700px;
   width: 50vw;
   min-width: 400px;
-  padding: 2rem;
+  height: 90%;
+  overflow: auto;
+  // padding: 2rem;
+  margin: 5% auto;
 }
 .meals-menu {
   padding: 2em;

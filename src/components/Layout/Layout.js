@@ -22,7 +22,7 @@ const Layout = ({ children, ...props }) => {
       <Box
         className="app-body"
         component="main"
-        sx={{ p: 3, mx: "auto", my: 8 }}
+        // sx={{ p: 3, mx: "auto", my: 8 }}
       >
         {/* <Toolbar /> no longer need this empty space hack from MUI*/}
         {children}

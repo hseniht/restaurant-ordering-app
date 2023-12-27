@@ -81,8 +81,8 @@ export default function TabbedMenu({ list }) {
   });
 
   return (
-    <Box sx={{ width: "100%" }}>
-      <Box>
+    <Box sx={{ width: "100%", height: "100%" }}>
+      <Box sx={{ height: "50px" }}>
         <Tabs
           centered
           value={value}

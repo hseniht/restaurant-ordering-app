@@ -93,10 +93,10 @@ const AvailableMeals = () => {
   }
   //normal render
   return (
-    <section>
-      <TabbedMenu list={meals} />
-      {/* <SingleList items={mealsList} /> */}
-    </section>
+    <TabbedMenu list={meals} />
+    // <section>
+    //   {/* <SingleList items={mealsList} /> */}
+    // </section>
   );
 };
 
