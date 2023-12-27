@@ -29,6 +29,7 @@ const AvailableMeals = () => {
           description: responseData[key].description,
           price: responseData[key].price,
           type: responseData[key].type,
+          imgSrc: responseData[key].imgSrc,
         });
       }
       setMeals(loadedMeals);

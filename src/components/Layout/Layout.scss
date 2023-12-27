@@ -1,3 +1,5 @@
+$bgColor-paper: #ebf5d14f;
+
 .main-bg {
   position: fixed;
   display: flex;
@@ -20,6 +22,7 @@ main {
   top: 64px;
   margin: 0;
   padding: 0;
+  background-color: $bgColor-paper;
   // overflow: auto;
 }
 

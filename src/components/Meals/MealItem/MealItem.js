@@ -5,7 +5,7 @@ import classes from "../Meals.module.scss";
 import MealItemForm from "./MealItemForm";
 import { CartContext } from "../../../contexts/cart-context";
 
-const MealItem = ({ id, name, description, price }) => {
+const MealItem = ({ id, name, description, price, image }) => {
   const cartCtx = useContext(CartContext);
 
   const prices = `$${price.toFixed(2)}`;
@@ -20,6 +20,7 @@ const MealItem = ({ id, name, description, price }) => {
   };
   return (
     <li className={classes.mealList}>
+      {image && <img className={classes["menu-thumbnail"]} src={image} />}
       <Stack direction="column" alignItems="flex-start" sx={{ width: "70%" }}>
         <Typography variant="h5" component="div">
           {name}

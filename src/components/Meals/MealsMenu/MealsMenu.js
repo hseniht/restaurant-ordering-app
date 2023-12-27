@@ -3,6 +3,7 @@ import Card from "@mui/material/Card";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
 import { TabPanel } from "../../UI/Tabs";
 import MealItem from "../MealItem/MealItem";
 import classes from "../Meals.module.scss";
@@ -28,15 +29,24 @@ export const SingleList = ({ items }) => {
 
 const MenuFrame = ({ title, icon, children }) => {
   return (
-    <div className="menu-frame">
-      <Divider sx={{ color: green }}>
-        <Stack alignItems="center" spacing={0} justifyContent="space-around">
-          <h2 style={{ margin: 0 }}>{title}</h2>
-          {icon}
-        </Stack>
-      </Divider>
+    <div className={classes["menu-frame"]}>
+      <Stack alignItems="center" spacing={0} justifyContent="space-around">
+        <h2 style={{ margin: 0 }}>{title}</h2>
+        {icon}
+      </Stack>
+      <Divider sx={{ color: green }}></Divider>
       {children}
     </div>
+  );
+};
+
+const Menus = ({ value, index, title, icon, items }) => {
+  return (
+    <TabPanel className={classes["menu-panel"]} value={value} index={index}>
+      <MenuFrame title={title} icon={icon}>
+        <SingleList items={items} />
+      </MenuFrame>
+    </TabPanel>
   );
 };
 
@@ -60,6 +70,7 @@ export default function TabbedMenu({ list }) {
         name={meal.name}
         description={meal.description}
         price={meal.price}
+        image={meal.imgSrc}
       />
     );
     switch (meal.type) {
@@ -81,7 +92,7 @@ export default function TabbedMenu({ list }) {
   });
 
   return (
-    <Box sx={{ width: "100%", height: "100%" }}>
+    <Paper elevation={3} className={classes["menu-container"]}>
       <Box sx={{ height: "50px" }}>
         <Tabs
           centered
@@ -102,26 +113,34 @@ export default function TabbedMenu({ list }) {
           <Tab label="Desserts" />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}>
-        <MenuFrame title={"Appetizers"} icon={ICON_APPETIZER}>
-          <SingleList items={appetizerList} />
-        </MenuFrame>
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <MenuFrame title={"Mains"} icon={ICON_MAINS}>
-          <SingleList items={mainList} />
-        </MenuFrame>
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <MenuFrame title={"Drinks"} icon={ICON_DRINKS}>
-          <SingleList items={drinkList} />
-        </MenuFrame>
-      </TabPanel>{" "}
-      <TabPanel value={value} index={3}>
-        <MenuFrame title={"Desserts"} icon={ICON_DESSERTS}>
-          <SingleList items={dessertList} />
-        </MenuFrame>
-      </TabPanel>
-    </Box>
+      <Menus
+        value={value}
+        index={0}
+        title="Appetizers"
+        icon={ICON_APPETIZER}
+        items={appetizerList}
+      />
+      <Menus
+        value={value}
+        index={1}
+        title="Mains"
+        icon={ICON_MAINS}
+        items={mainList}
+      />
+      <Menus
+        value={value}
+        index={2}
+        title="Drinks"
+        icon={ICON_DRINKS}
+        items={drinkList}
+      />
+      <Menus
+        value={value}
+        index={3}
+        title="Desserts"
+        icon={ICON_DESSERTS}
+        items={dessertList}
+      />
+    </Paper>
   );
 }

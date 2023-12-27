@@ -11,10 +11,19 @@
   height: 90%;
   overflow: auto;
   // padding: 2rem;
-  margin: 5% auto;
+  margin: 0 auto;
+  position: relative;
+  top: 5%;
+}
+.menu-panel {
+  height: calc(100% - 50px);
+}
+.menu-frame {
+  height: 100%;
+  overflow: auto;
 }
 .meals-menu {
-  padding: 2em;
+  padding: 1em;
   margin: 0;
 }
 .mealList {
@@ -41,4 +50,11 @@
   align-items: center;
   zoom: 0.85;
   padding: 1em 0;
+}
+
+.menu-thumbnail {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
 }

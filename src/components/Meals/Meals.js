@@ -5,10 +5,10 @@ import Paper from "@mui/material/Paper";
 import classes from "./Meals.module.scss";
 const Meals = () => {
   return (
-    <Paper className={classes["menu-container"]} elevation={3}>
-      {/* <MealsSummary /> */}
+    // <Paper className={classes["menu-container"]} elevation={3}>
+    //   {/* <MealsSummary /> */}
+    // </Paper>
       <AvailableMeals />
-    </Paper>
   );
 };
 
