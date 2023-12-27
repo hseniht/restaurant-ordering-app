@@ -7,6 +7,7 @@ import { DUMMY_MEALS } from "./dummy-meals";
 import RotateLeftIcon from "@mui/icons-material/RotateLeft";
 import { SingleList } from "./MealsMenu/MealsMenu";
 import TabbedMenu from "./MealsMenu/MealsMenu";
+import { MENU_API_URL } from "../../constants/constants";
 
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
@@ -15,9 +16,7 @@ const AvailableMeals = () => {
 
   useEffect(() => {
     const fetchMeals = async () => {
-      const response = await fetch(
-        "https://react-http-480e0-default-rtdb.asia-southeast1.firebasedatabase.app/Meals.json"
-      );
+      const response = await fetch(MENU_API_URL);
       const responseData = await response.json();
 
       const loadedMeals = [];
