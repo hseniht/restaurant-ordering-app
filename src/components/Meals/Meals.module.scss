@@ -26,6 +26,10 @@
   padding: 1em;
   margin: 0;
 }
+.meal-quantity-control {
+  padding: 1em;
+  margin: 0 auto;
+}
 .meals-info {
   width: 70%;
   padding-left: 1em;
@@ -80,8 +84,8 @@
   // width: 50%;
   // min-width: 300px;
   // background-color: salmon;
-
-}.menu-dialog__details--body {
+}
+.menu-dialog__details--body {
   width: 50%;
   min-width: 300px;
   max-width: 500px !important; //overide MUI style

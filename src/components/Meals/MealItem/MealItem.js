@@ -7,13 +7,25 @@ import { CartContext } from "../../../contexts/cart-context";
 import Badge from "@mui/material/Badge";
 import Box from "@mui/material/Box";
 import { MUIDialog } from "../../UI/Modal";
+import CartItem, { QuantityControl } from "../../Cart/CartItem";
 
-const MealThumbnail = ({ className, image, amount, onClick }) => {
-  return (
-    <Badge color="salsa" overlap="rectangular" badgeContent={amount}>
-      <img className={className} src={image} onClick={onClick} />
-    </Badge>
-  );
+const MealThumbnail = ({ className, image, onClick }) => {
+  return <img className={className} src={image} onClick={onClick} />;
+};
+// HOC
+const withMealBadge =
+  (WrappedComponent) =>
+  ({ amount, ...props }) =>
+    (
+      <Badge color="salsa" overlap="rectangular" badgeContent={amount}>
+        <WrappedComponent {...props} />
+      </Badge>
+    );
+
+const MealThumbnailWithBadge = withMealBadge(MealThumbnail);
+
+const MealCalculator = ({ amount }) => {
+  const cartCtx = useContext(CartContext);
 };
 
 const MealInfo = ({ name, price, description }) => {
@@ -35,12 +47,25 @@ const MealInfo = ({ name, price, description }) => {
           {price}
         </Typography>
       </div>
-      <Typography className={classes["meals-info__body"]} variant="body2">{description}</Typography>
+      <Typography className={classes["meals-info__body"]} variant="body2">
+        {description}
+      </Typography>
     </div>
   );
 };
 
-const MealDetailedInfo = ({ amount, description, image, name, price }) => {
+const MealDetailedInfo = ({ amount, description, image, name, price, priceStr, id }) => {
+  const cartCtx = useContext(CartContext);
+  const item = { id, name, price, amount };
+
+  const cartItemRemoveHandler = (id) => {
+    cartCtx.removeItem(id);
+  };
+  const cartItemAddHandler = (item) => {
+    console.log("tk cart adding2", item );
+    cartCtx.addItem({ ...item, amount: 1 });
+  };
+
   return (
     <>
       <MealThumbnail
@@ -48,7 +73,22 @@ const MealDetailedInfo = ({ amount, description, image, name, price }) => {
         image={image}
         amount={amount}
       />
-      <MealInfo name={name} price={price} description={description} />
+      <MealInfo name={name} price={priceStr} description={description} />
+      {/* <MealCalculator/> */}
+      {/* <CartItem
+        key={id}
+        name={name}
+        amount={amount}
+        price={rawPrice}
+        onRemove={cartItemRemoveHandler.bind(null, id)}
+        onAdd={cartItemAddHandler.bind(null, item)}
+      /> */}
+      <QuantityControl
+        className={classes["meal-quantity-control"]}
+        onRemove={cartItemRemoveHandler.bind(null, id)}
+        onAdd={cartItemAddHandler.bind(null, item)}
+        amount={amount}
+      />
     </>
   );
 };
@@ -57,7 +97,7 @@ const MealItem = ({ id, name, description, price, image, amount }) => {
   const cartCtx = useContext(CartContext);
   const [openMeal, setOpenMeal] = useState(false);
 
-  const prices = `$${price.toFixed(2)}`;
+  const priceStr = `$${price.toFixed(2)}`;
 
   const addToCartHandler = (amount) => {
     cartCtx.addItem({
@@ -75,7 +115,7 @@ const MealItem = ({ id, name, description, price, image, amount }) => {
   return (
     <li className={classes.mealList}>
       {image && (
-        <MealThumbnail
+        <MealThumbnailWithBadge
           className={classes["menu-thumbnail"]}
           image={image}
           amount={amount}
@@ -95,11 +135,21 @@ const MealItem = ({ id, name, description, price, image, amount }) => {
           image={image}
           amount={amount}
         />
-        <MealInfo name={name} price={prices} description={description} /> */}
+        <MealInfo name={name} price={priceStr} description={description} /> */}
         {/* Spread Props baby! */}
-        <MealDetailedInfo {...{ amount, description, image, name, price: prices }} />
+        <MealDetailedInfo
+          {...{
+            amount,
+            description,
+            id,
+            image,
+            name,
+            price,
+            priceStr,
+          }}
+        />
       </MUIDialog>
-      <MealInfo name={name} price={prices} description={description} />
+      <MealInfo name={name} price={priceStr} description={description} />
       <Stack
         direction="column"
         justifyContent="space-between"
