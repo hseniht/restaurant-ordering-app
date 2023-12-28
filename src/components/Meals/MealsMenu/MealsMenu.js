@@ -14,6 +14,7 @@ import IcecreamOutlinedIcon from "@mui/icons-material/IcecreamOutlined";
 import LocalCafeOutlinedIcon from "@mui/icons-material/LocalCafeOutlined";
 import { Stack } from "@mui/system";
 import { theme } from "../../UI/palletes";
+import { CartContext } from "../../../contexts/cart-context";
 
 const ICON_APPETIZER = <KebabDiningOutlinedIcon />;
 const ICON_MAINS = <RestaurantMenuOutlinedIcon />;
@@ -52,6 +53,7 @@ const Menus = ({ value, index, title, icon, items }) => {
 
 export default function TabbedMenu({ list }) {
   const [value, setValue] = React.useState(0);
+  const cartCtx = React.useContext(CartContext);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -63,6 +65,8 @@ export default function TabbedMenu({ list }) {
   let dessertList = [];
 
   list.map((meal) => {
+    // Find the corresponding item in the cart based on id
+    const mealInCart = cartCtx.items.find((item) => item.id === meal.id);
     const list = (
       <MealItem
         key={meal.id}
@@ -71,6 +75,7 @@ export default function TabbedMenu({ list }) {
         description={meal.description}
         price={meal.price}
         image={meal.imgSrc}
+        amount={mealInCart && mealInCart.amount}
       />
     );
     switch (meal.type) {

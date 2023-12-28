@@ -4,8 +4,17 @@ import Stack from "@mui/material/Stack";
 import classes from "../Meals.module.scss";
 import MealItemForm from "./MealItemForm";
 import { CartContext } from "../../../contexts/cart-context";
+import Badge from "@mui/material/Badge";
 
-const MealItem = ({ id, name, description, price, image }) => {
+const MealThumbnail = ({ className, image, amount }) => {
+  return (
+    <Badge color="salsa" overlap="rectangular" badgeContent={amount}>
+      <img className={className} src={image} />
+    </Badge>
+  );
+};
+
+const MealItem = ({ id, name, description, price, image, amount }) => {
   const cartCtx = useContext(CartContext);
 
   const prices = `$${price.toFixed(2)}`;
@@ -20,10 +29,28 @@ const MealItem = ({ id, name, description, price, image }) => {
   };
   return (
     <li className={classes.mealList}>
-      {image && <img className={classes["menu-thumbnail"]} src={image} />}
-      <Stack direction="column" alignItems="flex-start" sx={{ width: "70%" }}>
-        <Typography variant="h5" component="div">
+      {image && (
+        <MealThumbnail
+          className={classes["menu-thumbnail"]}
+          image={image}
+          amount={amount}
+        />
+      )}
+      <Stack
+        direction="column"
+        alignItems="flex-start"
+        sx={{ width: "70%", paddingLeft: "1em" }}
+      >
+        <Typography variant="h6" component="div">
           {name}
+        </Typography>
+        <Typography
+          component="div"
+          sx={{ fontWeight: "bold" }}
+          color="text.secondary"
+          gutterBottom
+        >
+          {prices}
         </Typography>
         <Typography variant="body2">{description}</Typography>
       </Stack>
@@ -33,14 +60,6 @@ const MealItem = ({ id, name, description, price, image }) => {
         alignItems="flex-start"
         // spacing={0}
       >
-        <Typography
-          component="div"
-          sx={{ fontWeight: "bold" }}
-          color="text.secondary"
-          gutterBottom
-        >
-          {prices}
-        </Typography>
         <MealItemForm id={id} onAddToCart={addToCartHandler} />
       </Stack>
     </li>

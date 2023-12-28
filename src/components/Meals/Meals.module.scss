@@ -8,7 +8,7 @@
   max-width: 700px;
   width: 50vw;
   min-width: 400px;
-  height: 90%;
+  max-height: 90%;
   overflow: auto;
   // padding: 2rem;
   margin: 0 auto;
@@ -54,6 +54,7 @@
 
 .menu-thumbnail {
   width: 100px;
+  min-width: 100px;
   height: 100px;
   object-fit: cover;
   border-radius: 5px;

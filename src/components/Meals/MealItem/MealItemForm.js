@@ -50,6 +50,7 @@ const MealItemForm = ({ id, onAddToCart }) => {
         size="small"
         helperText={validationMessage}
         error={!amountIsValid}
+        sx={{display: "none"}}
       />
       <StyledAddBtn
         size="small"
