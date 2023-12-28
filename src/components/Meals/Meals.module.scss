@@ -26,6 +26,17 @@
   padding: 1em;
   margin: 0;
 }
+.meals-info {
+  width: 70%;
+  padding-left: 1em;
+  &__heading {
+    display: flex;
+    flex-direction: column;
+  }
+  &__body {
+    // background-color: skyblue;
+  }
+}
 .mealList {
   list-style: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.16);
@@ -58,4 +69,35 @@
   height: 100px;
   object-fit: cover;
   border-radius: 5px;
+  &__dialog {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+}
+
+.menu-dialog__details--root {
+  // width: 50%;
+  // min-width: 300px;
+  // background-color: salmon;
+
+}.menu-dialog__details--body {
+  width: 50%;
+  min-width: 300px;
+  max-width: 500px !important; //overide MUI style
+  .meals-info {
+    width: 100%;
+    padding: 1em;
+    box-sizing: border-box;
+    &__heading {
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+      justify-content: space-between;
+      // padding: 1em;
+    }
+    &__body {
+      // background-color: skyblue;
+    }
+  }
 }
