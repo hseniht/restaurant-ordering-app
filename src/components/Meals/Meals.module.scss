@@ -1,3 +1,7 @@
+//variables
+
+$color-gray-tint-1: rgba(0, 0, 0, 0.2);
+
 .summary {
   margin: 2em auto;
   width: 70%;
@@ -10,20 +14,29 @@
   min-width: 400px;
   max-height: 90%;
   overflow: auto;
-  // padding: 2rem;
+  padding: 1em;
+  box-sizing: border-box;
   margin: 0 auto;
   position: relative;
   top: 5%;
+  display: flex;
+  flex-direction: column;
 }
 .menu-panel {
-  height: calc(100% - 50px);
+  overflow: auto;
+  padding: 0 0.5em;
 }
 .menu-frame {
-  height: 100%;
   overflow: auto;
 }
+.menu-tabs {
+  height: 50px;
+  border: 2px dashed $color-gray-tint-1;
+  border-width: 2px 0;
+  margin-bottom: 12px;
+}
 .meals-menu {
-  padding: 1em;
+  padding: 0;
   margin: 0;
 }
 .meal-quantity-control {

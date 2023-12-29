@@ -98,26 +98,27 @@ export default function TabbedMenu({ list }) {
 
   return (
     <Paper elevation={3} className={classes["menu-container"]}>
-      <Box sx={{ height: "50px" }}>
-        <Tabs
-          centered
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-          textColor={"inherit"}
-          // textColor={theme.palette.salsa.main}
-          // indicatorColor="inherit"
-          TabIndicatorProps={{
-            style: { color: "red", backgroundColor: green },
-          }}
-        >
-          {/* <Tab label="Item One" {...a11yProps(0)} /> */}
-          <Tab label="Appetizers" />
-          <Tab label="Mains" />
-          <Tab label="Drinks" />
-          <Tab label="Desserts" />
-        </Tabs>
-      </Box>
+      <Tabs
+        className={classes["menu-tabs"]}
+        centered
+        value={value}
+        onChange={handleChange}
+        aria-label="basic tabs example"
+        textColor={"inherit"}
+        // textColor={theme.palette.salsa.main}
+        // indicatorColor="inherit"
+        TabIndicatorProps={{
+          style: { color: "red", backgroundColor: "unset" },
+        }}
+        sx={{ "& .Mui-selected": { color: "red", fontWeight: "bold" } }}
+      >
+        {/* <Tab label="Item One" {...a11yProps(0)} /> */}
+        <Tab label="Appetizers" />
+        <Tab label="Mains" />
+        <Tab label="Drinks" />
+        <Tab label="Desserts" />
+      </Tabs>
+
       <Menus
         value={value}
         index={0}

@@ -62,7 +62,6 @@ const MealDetailedInfo = ({ amount, description, image, name, price, priceStr, i
     cartCtx.removeItem(id);
   };
   const cartItemAddHandler = (item) => {
-    console.log("tk cart adding2", item );
     cartCtx.addItem({ ...item, amount: 1 });
   };
 
@@ -110,7 +109,6 @@ const MealItem = ({ id, name, description, price, image, amount }) => {
 
   const handleMenuClick = () => {
     setOpenMeal(true);
-    console.log("tk open up");
   };
   return (
     <li className={classes.mealList}>

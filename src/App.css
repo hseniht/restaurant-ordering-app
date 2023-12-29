@@ -28,6 +28,38 @@
   color: #61dafb;
 }
 
+/* scrollbar */
+
+/* For WebKit browsers (Chrome, Safari) */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: tan #f1f1f1; /*thumb and track*/
+}
+::-webkit-scrollbar {
+  width: 6px; /* Width of the scrollbar */
+  transition: 1.5s all;
+}
+::-webkit-scrollbar:hover {
+  width: 8px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track color */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #00000010; /* Thumb color */
+  border-radius: 4px; /* Rounded corners for the thumb */
+  transition: 1.5s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: tan; /* Thumb color on hover */
+  width: 8px;
+  transition: 1s all;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
