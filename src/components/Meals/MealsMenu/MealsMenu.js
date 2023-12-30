@@ -15,6 +15,7 @@ import LocalCafeOutlinedIcon from "@mui/icons-material/LocalCafeOutlined";
 import { Stack } from "@mui/system";
 import { theme } from "../../UI/palletes";
 import { CartContext } from "../../../contexts/cart-context";
+import { menuGlossary } from "../../../constants/constants";
 
 const ICON_APPETIZER = <KebabDiningOutlinedIcon />;
 const ICON_MAINS = <RestaurantMenuOutlinedIcon />;
@@ -23,9 +24,19 @@ const ICON_DRINKS = <LocalCafeOutlinedIcon />;
 
 const green = theme.palette.salad.main;
 
+const { appetizers, mains, drinks, dessert } = menuGlossary;
 //menu items in one single poge
 export const SingleList = ({ items }) => {
   return <ul className={classes["meals-menu"]}>{items}</ul>;
+};
+
+const MenuSummary = ({ pageTitle, pageDescription }) => {
+  return (
+    <div className={classes["menu-summary"]}>
+      <div className={classes["menu-summary__title"]}>{pageTitle}</div>
+      <p className={classes["menu-summary__description"]}>{pageDescription}</p>
+    </div>
+  );
 };
 
 const MenuFrame = ({ title, icon, children }) => {
@@ -41,12 +52,21 @@ const MenuFrame = ({ title, icon, children }) => {
   );
 };
 
-const Menus = ({ value, index, title, icon, items }) => {
+const Menus = ({
+  value,
+  index,
+  title,
+  icon,
+  items,
+  pageTitle,
+  pageDescription,
+}) => {
   return (
     <TabPanel className={classes["menu-panel"]} value={value} index={index}>
-      <MenuFrame title={title} icon={icon}>
-        <SingleList items={items} />
-      </MenuFrame>
+      {/* <MenuFrame title={title} icon={icon}>
+      </MenuFrame> */}
+      <MenuSummary pageTitle={pageTitle} pageDescription={pageDescription} />
+      <SingleList items={items} />
     </TabPanel>
   );
 };
@@ -123,6 +143,8 @@ export default function TabbedMenu({ list }) {
         value={value}
         index={0}
         title="Appetizers"
+        pageTitle={appetizers.title}
+        pageDescription={appetizers.description}
         icon={ICON_APPETIZER}
         items={appetizerList}
       />
@@ -132,6 +154,8 @@ export default function TabbedMenu({ list }) {
         title="Mains"
         icon={ICON_MAINS}
         items={mainList}
+        pageTitle={mains.title}
+        pageDescription={mains.description}
       />
       <Menus
         value={value}
@@ -139,6 +163,8 @@ export default function TabbedMenu({ list }) {
         title="Drinks"
         icon={ICON_DRINKS}
         items={drinkList}
+        pageTitle={drinks.title}
+        pageDescription={drinks.description}
       />
       <Menus
         value={value}
@@ -146,6 +172,8 @@ export default function TabbedMenu({ list }) {
         title="Desserts"
         icon={ICON_DESSERTS}
         items={dessertList}
+        pageTitle={dessert.title}
+        pageDescription={dessert.description}
       />
     </Paper>
   );

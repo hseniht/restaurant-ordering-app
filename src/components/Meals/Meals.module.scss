@@ -35,6 +35,20 @@ $color-gray-tint-1: rgba(0, 0, 0, 0.2);
   border-width: 2px 0;
   margin-bottom: 12px;
 }
+.menu-summary {
+  color: white;
+  &__title {
+    background-color: steelblue;
+    color: currentColor;
+    padding: 2px 8px;
+    border-radius: 4px;
+    line-height: 1.5em;
+  }
+  &__description {
+    font-size: 14px;
+    color: gray;
+  }
+}
 .meals-menu {
   padding: 0;
   margin: 0;
