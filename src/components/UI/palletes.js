@@ -23,4 +23,7 @@ export const theme = createTheme({
     },
     // mode: "dark"
   },
+  typography: {
+    fontFamily: "Lora",
+  },
 });

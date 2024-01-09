@@ -35,11 +35,11 @@ const MealInfo = ({ name, price, description }) => {
       // sx={{ width: "70%", paddingLeft: "1em" }}
     >
       <div className={classes["meals-info__heading"]}>
-        <Typography className="test" variant="h6" component="div">
+        <Typography className={classes["title"]} variant="h6" component="h6">
           {name}
         </Typography>
         <Typography
-          component="div"
+          className={classes["price"]}
           sx={{ fontWeight: "bold" }}
           color="text.secondary"
           gutterBottom
@@ -47,14 +47,26 @@ const MealInfo = ({ name, price, description }) => {
           {price}
         </Typography>
       </div>
-      <Typography className={classes["meals-info__body"]} variant="body2">
+      <Typography
+        className={classes["meals-info__body"]}
+        variant="caption"
+        component={"p"}
+      >
         {description}
       </Typography>
     </div>
   );
 };
 
-const MealDetailedInfo = ({ amount, description, image, name, price, priceStr, id }) => {
+const MealDetailedInfo = ({
+  amount,
+  description,
+  image,
+  name,
+  price,
+  priceStr,
+  id,
+}) => {
   const cartCtx = useContext(CartContext);
   const item = { id, name, price, amount };
 
@@ -148,14 +160,7 @@ const MealItem = ({ id, name, description, price, image, amount }) => {
         />
       </MUIDialog>
       <MealInfo name={name} price={priceStr} description={description} />
-      <Stack
-        direction="column"
-        justifyContent="space-between"
-        alignItems="flex-start"
-        // spacing={0}
-      >
-        <MealItemForm id={id} onAddToCart={addToCartHandler} />
-      </Stack>
+      <MealItemForm id={id} onAddToCart={addToCartHandler} />
     </li>
   );
 };

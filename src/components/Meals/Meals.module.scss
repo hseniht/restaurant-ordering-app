@@ -38,7 +38,7 @@ $color-gray-tint-1: rgba(0, 0, 0, 0.2);
 .menu-summary {
   color: white;
   &__title {
-    background-color: steelblue;
+    background-color: slategray;
     color: currentColor;
     padding: 2px 8px;
     border-radius: 4px;
@@ -57,16 +57,36 @@ $color-gray-tint-1: rgba(0, 0, 0, 0.2);
   padding: 1em;
   margin: 0 auto;
 }
-.meals-info {
-  width: 70%;
-  padding-left: 1em;
+
+@mixin meals-info-typography {
   &__heading {
     display: flex;
     flex-direction: column;
+    color: slategray;
+    > .title {
+      font-weight: 600;
+    }
+    > .price {
+      // font-weight: bolder;
+      color: darkslategray;
+    }
   }
   &__body {
-    // background-color: skyblue;
+    color: lightslategray;
+    font-size: 12px;
+    font-style: italic;
   }
+}
+
+.meals-info {
+  width: calc(100% - (100px + 75px));
+  padding-left: 1em;
+  @include meals-info-typography;
+  // &__body {
+  //   white-space: nowrap;
+  //   overflow: hidden;
+  //   text-overflow: ellipsis;
+  // }
 }
 .mealList {
   list-style: none;
@@ -89,7 +109,7 @@ $color-gray-tint-1: rgba(0, 0, 0, 0.2);
 
 .amount-form {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   zoom: 0.85;
   padding: 1em 0;
 }
@@ -129,6 +149,8 @@ $color-gray-tint-1: rgba(0, 0, 0, 0.2);
     }
     &__body {
       // background-color: skyblue;
+      font-style: unset;
+      font-size: 14px;
     }
   }
 }
