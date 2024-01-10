@@ -111,6 +111,7 @@ const MealItem = ({ id, name, description, price, image, amount }) => {
   const priceStr = `$${price.toFixed(2)}`;
 
   const addToCartHandler = (amount) => {
+    // e.stopPropagation(); // Stop dialog event propagation
     cartCtx.addItem({
       id,
       name,
@@ -123,15 +124,19 @@ const MealItem = ({ id, name, description, price, image, amount }) => {
     setOpenMeal(true);
   };
   return (
-    <li className={classes.mealList}>
-      {image && (
-        <MealThumbnailWithBadge
-          className={classes["menu-thumbnail"]}
-          image={image}
-          amount={amount}
-          onClick={handleMenuClick}
-        />
-      )}
+    <>
+      <li className={classes.mealList}>
+        {image && (
+          <MealThumbnailWithBadge
+            className={classes["menu-thumbnail"]}
+            image={image}
+            amount={amount}
+            onClick={handleMenuClick}
+          />
+        )}
+        <MealInfo name={name} price={priceStr} description={description} />
+        <MealItemForm id={id} onAddToCart={addToCartHandler} />
+      </li>
       <MUIDialog
         // klass={{ root: "test" + classes["menu-dialog__details"] }}
         rootClass={classes["menu-dialog__details--root"]}
@@ -140,12 +145,6 @@ const MealItem = ({ id, name, description, price, image, amount }) => {
         onClose={setOpenMeal}
         // title={name}
       >
-        {/* <MealThumbnail
-          className={classes["menu-thumbnail"]}
-          image={image}
-          amount={amount}
-        />
-        <MealInfo name={name} price={priceStr} description={description} /> */}
         {/* Spread Props baby! */}
         <MealDetailedInfo
           {...{
@@ -159,9 +158,7 @@ const MealItem = ({ id, name, description, price, image, amount }) => {
           }}
         />
       </MUIDialog>
-      <MealInfo name={name} price={priceStr} description={description} />
-      <MealItemForm id={id} onAddToCart={addToCartHandler} />
-    </li>
+    </>
   );
 };
 

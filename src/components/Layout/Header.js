@@ -6,20 +6,23 @@ import Typography from "@mui/material/Typography";
 import HeaderCart from "./HeaderCart";
 const Header = (props) => {
   return (
-    <Box className="app-header" sx={{ display: "flex" }}>
-      <AppBar component="nav" color="salsa">
-        <Toolbar>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            TK Eats
-          </Typography>
-          <HeaderCart />
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <AppBar
+      component="nav"
+      // color="salsa"
+      classes={{ root: "app-header" }}
+    >
+      <Toolbar className="nav-menu-wrap">
+        <Typography
+          className="logo"
+          variant="h6"
+          component="div"
+          sx={{ flexGrow: 0, display: { xs: "none", sm: "block" } }}
+        >
+          L'Exquis Brasserié
+        </Typography>
+        <HeaderCart />
+      </Toolbar>
+    </AppBar>
   );
 };
 

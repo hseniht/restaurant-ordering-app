@@ -16,7 +16,7 @@ const MainBackground = ({ className }) => {
 
 const Layout = ({ children, ...props }) => {
   return (
-    <Box sx={{ display: "flex" }}>
+    <div id={"restaurant-app-root"}>
       <MainBackground className="main-bg" />
       <Header />
       <Box
@@ -27,7 +27,7 @@ const Layout = ({ children, ...props }) => {
         {/* <Toolbar /> no longer need this empty space hack from MUI*/}
         {children}
       </Box>
-    </Box>
+    </div>
   );
 };
 

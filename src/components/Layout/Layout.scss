@@ -1,4 +1,15 @@
 $bgColor-paper: #ebf5d14f;
+$header-height: 69px;
+
+@mixin paperTexture {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: url("../../assets/bg-texture-2.svg");
+}
 
 .main-bg {
   position: fixed;
@@ -18,15 +29,42 @@ main {
   // position: relative;
   position: absolute;
   width: 100%;
-  height: calc(100% - 64px);
-  top: 64px;
+  height: calc(100% - #{$header-height});
+  top: $header-height;
   margin: 0;
   padding: 0;
   background-color: $bgColor-paper;
   // overflow: auto;
+  &::before {
+    @include paperTexture;
+    filter: blur(0.75px);
+    opacity: 0.3;
+  }
 }
 
 .app-header {
   position: relative;
-  height: 30px;
+  height: $header-height;
+  background-color: transparent;
+  .nav-menu-wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+  .logo {
+    border: 1px solid lightslategray;
+    padding: 2px 10px;
+    position: relative;
+    overflow: hidden;
+    &::before {
+      @include paperTexture;
+      scale: 2;
+    }
+  }
+}
+
+#restaurant-app-root {
+  .app-header {
+    background-color: $bgColor-paper;
+    color: rgba(0, 0, 0, 0.54);
+  }
 }
