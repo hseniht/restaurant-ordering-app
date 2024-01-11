@@ -1,8 +1,10 @@
 import Box from "@mui/material/Box";
 import Header from "./Header";
 import Toolbar from "@mui/material/Toolbar";
-import bgLeft from "../../assets/bg-Left.svg";
-import bgRight from "../../assets/bg-Right.svg";
+// import bgLeft from "../../assets/bg-Left.svg";
+// import bgRight from "../../assets/bg-Right.svg";
+import bgLeft from "../../assets/bg-left-ingredients.svg";
+import bgRight from "../../assets/bg-right-ingredients.svg";
 import "./Layout.scss";
 
 const MainBackground = ({ className }) => {

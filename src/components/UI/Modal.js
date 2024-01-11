@@ -22,6 +22,19 @@ export const MUIDialog = ({
       classes={{ root: rootClass, paper: dialogClass }}
       onClose={handleClose}
       open={open}
+      slotProps={{
+        backdrop: {
+          sx: {
+            background: `repeating-linear-gradient(
+              -45deg,
+              rgba(0,0,0,0.5),
+              rgba(0,0,0,0.5) 5px,
+              rgba(0,0,0,0.4) 5px,
+              rgba(0,0,0,0.6) 20px
+            )`,
+          },
+        },
+      }}
     >
       {title && <DialogTitle>{title}</DialogTitle>}
       {children}
