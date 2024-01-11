@@ -1,17 +1,19 @@
 {
   "files": {
-    "main.css": "/restaurant-ordering-app/static/css/main.82a8257b.css",
-    "main.js": "/restaurant-ordering-app/static/js/main.61f5d660.js",
-    "static/js/787.b5cad815.chunk.js": "/restaurant-ordering-app/static/js/787.b5cad815.chunk.js",
-    "static/media/bg-Right.svg": "/restaurant-ordering-app/static/media/bg-Right.7ba36dbb12dc41cbdf42504636f95273.svg",
-    "static/media/bg-Left.svg": "/restaurant-ordering-app/static/media/bg-Left.e98afa332ca2e2a27ab19303fabf0d86.svg",
+    "main.css": "/restaurant-ordering-app/static/css/main.5a04f265.css",
+    "main.js": "/restaurant-ordering-app/static/js/main.8866bc81.js",
+    "static/js/787.56d155a4.chunk.js": "/restaurant-ordering-app/static/js/787.56d155a4.chunk.js",
+    "static/media/bg-right-ingredients.svg": "/restaurant-ordering-app/static/media/bg-right-ingredients.dfa4e4fc5d21123e7b5a987cf363eef6.svg",
+    "static/media/bg-left-ingredients.svg": "/restaurant-ordering-app/static/media/bg-left-ingredients.451b38fa20c3c9cb5d650a00ebab3189.svg",
+    "static/media/nachos.jpg": "/restaurant-ordering-app/static/media/nachos.184dad1cd781357e849c.jpg",
+    "static/media/bg-texture-2.svg": "/restaurant-ordering-app/static/media/bg-texture-2.5ef16ec9109294d8304d.svg",
     "index.html": "/restaurant-ordering-app/index.html",
-    "main.82a8257b.css.map": "/restaurant-ordering-app/static/css/main.82a8257b.css.map",
-    "main.61f5d660.js.map": "/restaurant-ordering-app/static/js/main.61f5d660.js.map",
-    "787.b5cad815.chunk.js.map": "/restaurant-ordering-app/static/js/787.b5cad815.chunk.js.map"
+    "main.5a04f265.css.map": "/restaurant-ordering-app/static/css/main.5a04f265.css.map",
+    "main.8866bc81.js.map": "/restaurant-ordering-app/static/js/main.8866bc81.js.map",
+    "787.56d155a4.chunk.js.map": "/restaurant-ordering-app/static/js/787.56d155a4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.82a8257b.css",
-    "static/js/main.61f5d660.js"
+    "static/css/main.5a04f265.css",
+    "static/js/main.8866bc81.js"
   ]
 }
