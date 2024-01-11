@@ -77,7 +77,7 @@ const Cart = (props) => {
         onClick={cartCtx.ui.handleHide}
         aria-label="add"
         variant="outlined"
-        color="salsa"
+        color="slate"
         sx={{ marginRight: "1em" }}
       >
         Close
@@ -87,7 +87,7 @@ const Cart = (props) => {
           onClick={orderHandler}
           aria-label="add"
           variant="contained"
-          color="salsa"
+          color="slate"
         >
           Order
         </Button>
@@ -97,7 +97,7 @@ const Cart = (props) => {
 
   const cartModalContent = (
     <Fragment>
-      <div className="cart-item">
+      <div className={classes["cart-heading"]}>
         <h1>Cart summary</h1>
       </div>
       {cartItems}

@@ -50,14 +50,14 @@ const MealItemForm = ({ id, onAddToCart }) => {
         size="small"
         helperText={validationMessage}
         error={!amountIsValid}
-        sx={{display: "none"}}
+        sx={{ display: "none" }}
       />
       <StyledAddBtn
         size="small"
         type="submit"
         aria-label="add"
         variant="contained"
-        color="salsa"
+        color="slate"
       >
         <AddIcon />
       </StyledAddBtn>

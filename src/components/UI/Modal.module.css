@@ -8,10 +8,10 @@
   /* background-color: rgba(0, 0, 0, 0.75); */
   background: repeating-linear-gradient(
     -45deg,
-    rgba(0,0,0,0.5),
-    rgba(0,0,0,0.5) 5px,
-    rgba(0,0,0,0.4) 5px,
-    rgba(0,0,0,0.6) 20px
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5) 5px,
+    rgba(0, 0, 0, 0.4) 5px,
+    rgba(0, 0, 0, 0.6) 20px
   );
 }
 
@@ -23,16 +23,40 @@
   max-height: 80vh;
   background-color: white;
   /* padding: 1rem; */
-  border-radius: 14px;
+  border-radius: 14px 0 0 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;
   animation: slide-down 300ms ease-out forwards;
+  font-size: smaller;
+}
+
+.modal::before {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  border-width: 12px;
+  border-color: #bbbbbb transparent transparent transparent;
+  right: -24px;
+  border-width: 24px;
+  border-radius: 24px;
+  transform: rotate(45deg);
+}
+.modal::after {
+  content: "";
+  position: absolute;
+  /* bottom: 0; */
+  left: 0;
+  width: 100%;
+  height: 24px;
+  background: linear-gradient(-135deg, white 12px, transparent 0%),
+    linear-gradient(135deg, white 12px, transparent 0%);
+  background-size: 24px;
 }
 
 @media (min-width: 768px) {
   .modal {
-    width: 40rem;
-    left: calc(50% - 20rem);
+    width: 30rem;
+    left: calc(50% - 15rem); /* half of width*/
   }
 }
 

@@ -128,9 +128,9 @@ export default function TabbedMenu({ list }) {
         // textColor={theme.palette.salsa.main}
         // indicatorColor="inherit"
         TabIndicatorProps={{
-          style: { color: "red", backgroundColor: "unset" },
+          style: { color: "slategray", backgroundColor: "unset" },
         }}
-        sx={{ "& .Mui-selected": { color: "red", fontWeight: "bold" } }}
+        sx={{ "& .Mui-selected": { color: "slategray", fontWeight: "bold" } }}
       >
         {/* <Tab label="Item One" {...a11yProps(0)} /> */}
         <Tab label="Appetizers" />

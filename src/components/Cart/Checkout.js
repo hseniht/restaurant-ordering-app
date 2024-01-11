@@ -114,7 +114,7 @@ const Checkout = (props) => {
           onClick={props.onCancel}
           aria-label="add"
           variant="outlined"
-          color="salsa"
+          color="slate"
           sx={{ marginRight: "1em" }}
         >
           Cancel
@@ -123,7 +123,7 @@ const Checkout = (props) => {
           //   onClick={cartCtx.ui.handleShow}
           aria-label="confirm"
           variant="contained"
-          color="salsa"
+          color="slate"
           type="submit"
         >
           Confirm

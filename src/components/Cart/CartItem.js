@@ -13,7 +13,7 @@ export const QuantityControl = ({ amount, className, onRemove, onAdd }) => {
         type="submit"
         aria-label="add"
         variant="outlined"
-        color="salsa"
+        color="slate"
         onClick={onRemove}
         disabled={!amount}
       >
@@ -25,7 +25,7 @@ export const QuantityControl = ({ amount, className, onRemove, onAdd }) => {
         type="submit"
         aria-label="add"
         variant="contained"
-        color="salsa"
+        color="slate"
         onClick={onAdd}
       >
         <AddIcon />
