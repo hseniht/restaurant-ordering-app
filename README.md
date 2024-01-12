@@ -14,7 +14,7 @@ Welcome to our React restaurant ordering app! This app allows you to explore our
 
 ## Live Demo
 
-Check out the [Live Demo](link) to experience the app in action.
+Check out the site [here](https://hseniht.github.io/restaurant-ordering-app/) to experience the app in action.
 
 ## Tech Stack
 
