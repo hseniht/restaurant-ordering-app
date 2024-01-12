@@ -55,7 +55,7 @@ const Checkout = (props) => {
   };
   return (
     <form className={classes["user-details-form"]} onSubmit={confirmHandler}>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} className={classes["fillup-form"]}>
         <Grid item xs={6}>
           <TextField
             id="name"
@@ -109,7 +109,10 @@ const Checkout = (props) => {
         </Grid>
       </Grid>
       <br />
-      <div className="checkout-action" style={{ textAlign: "right" }}>
+      <div
+        className={classes["checkout-action"]}
+        style={{ textAlign: "right" }}
+      >
         <Button
           onClick={props.onCancel}
           aria-label="add"

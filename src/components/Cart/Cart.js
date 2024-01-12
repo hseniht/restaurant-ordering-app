@@ -32,8 +32,13 @@ const Cart = (props) => {
   };
   // isCheckout ? classes["cart-items--shrinked"] : classes["cart-items"]
   const cssShrinked = isCheckout ? { maxHeight: "35vh" } : null;
+
+  const klass = `${classes["cart-items"]} ${
+    isCheckout ? classes["checked"] : ""
+  }`;
   const cartItems = (
-    <ul className={classes["cart-items"]} style={cssShrinked}>
+    // <ul className={classes["cart-items"]} style={cssShrinked}>
+    <ul className={klass}>
       {cartCtx.items.map((item) => (
         <CartItem
           key={item.id}
@@ -72,7 +77,7 @@ const Cart = (props) => {
   };
 
   const modalActions = (
-    <div className="cart-action" style={{ textAlign: "right" }}>
+    <div className={classes["cart-action"]} style={{ textAlign: "right" }}>
       <Button
         onClick={cartCtx.ui.handleHide}
         aria-label="add"

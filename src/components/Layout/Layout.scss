@@ -67,5 +67,6 @@ main {
   .app-header {
     background-color: $bgColor-paper;
     color: rgba(0, 0, 0, 0.54);
+    z-index: 10;
   }
 }
