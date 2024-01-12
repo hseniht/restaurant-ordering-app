@@ -17,7 +17,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  max-height: calc(80vh - (35px + 50px + 38px));
+  max-height: calc(80vh - (35px + 50px + 38px + 20px + 20px));
   overflow: auto;
 }
 
