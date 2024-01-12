@@ -1,10 +1,17 @@
 .cart-heading {
   color: slategray;
   height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .cart-heading h1 {
   margin: 0;
+}
+.cart-heading button {
+  text-transform: none;
+  font-family: serif;
 }
 .cart-items {
   list-style: none;

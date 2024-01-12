@@ -104,6 +104,17 @@ const Cart = (props) => {
     <Fragment>
       <div className={classes["cart-heading"]}>
         <h1>Cart summary</h1>
+        {hasItems && (
+          <Button
+            size="small"
+            onClick={cartCtx.clearCart}
+            aria-label="clearCart"
+            variant="outlined"
+            color="salsa"
+          >
+            {"Clear all"}
+          </Button>
+        )}
       </div>
       {cartItems}
       <div className={classes["cart-total"]}>
