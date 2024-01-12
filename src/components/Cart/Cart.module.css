@@ -46,6 +46,18 @@
   height: 50px;
 }
 
+.cart-no-items {
+  padding: 20px;
+  text-align: center;
+}
+.cart-no-items .title {
+  color: gray;
+  font-weight: bold;
+}
+.cart-no-items .message {
+  color: darkgray;
+}
+
 .cart-action {
   height: 38px;
 }

@@ -5,6 +5,29 @@ import Modal from "../UI/Modal";
 import CartItem from "./CartItem";
 import classes from "./Cart.module.css";
 import Checkout from "./Checkout";
+import Typography from "@mui/material/Typography";
+import LocalDiningIcon from "@mui/icons-material/LocalDining";
+
+const CartEmpty = () => {
+  return (
+    <div className={classes["cart-no-items"]}>
+      <Typography className={classes["title"]} variant="h6" component="h6">
+        {"Empty Menu"}
+      </Typography>
+      <LocalDiningIcon
+        color="slate"
+        sx={{ fontSize: "5em", padding: "10px" }}
+      />
+      <Typography
+        className={classes["message"]}
+        variant="caption"
+        component={"p"}
+      >
+        {"Looks like you havent made your choice yet"}
+      </Typography>
+    </div>
+  );
+};
 
 const Cart = (props) => {
   const [isCheckout, setIsCheckout] = useState(false);
@@ -116,6 +139,7 @@ const Cart = (props) => {
           </Button>
         )}
       </div>
+      {!hasItems && <CartEmpty />}
       {cartItems}
       <div className={classes["cart-total"]}>
         <h3>Total amount: </h3>
