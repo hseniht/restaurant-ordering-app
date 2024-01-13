@@ -7,25 +7,38 @@ import classes from "./Cart.module.css";
 import Checkout from "./Checkout";
 import Typography from "@mui/material/Typography";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
-
-const CartEmpty = () => {
+import TaskAltIcon from "@mui/icons-material/TaskAlt";
+const MessageWithThumbnail = ({ className, title, message, thumbnail }) => {
   return (
-    <div className={classes["cart-no-items"]}>
+    <div className={className}>
       <Typography className={classes["title"]} variant="h6" component="h6">
-        {"Empty Menu"}
+        {title}
       </Typography>
-      <LocalDiningIcon
-        color="slate"
-        sx={{ fontSize: "5em", padding: "10px", opacity: "0.5" }}
-      />
+      {thumbnail}
       <Typography
         className={classes["message"]}
         variant="caption"
         component={"p"}
       >
-        {"Looks like you haven't made your choice yet."}
+        {message}
       </Typography>
     </div>
+  );
+};
+
+const CartEmpty = () => {
+  return (
+    <MessageWithThumbnail
+      className={classes["cart-no-items"]}
+      title={"Empty Menu"}
+      message={"Looks like you haven't made your choice yet."}
+      thumbnail={
+        <LocalDiningIcon
+          color="slate"
+          sx={{ fontSize: "5em", padding: "10px", opacity: "0.5" }}
+        />
+      }
+    />
   );
 };
 
@@ -106,7 +119,7 @@ const Cart = (props) => {
         aria-label="add"
         variant="outlined"
         color="slate"
-        sx={{ marginRight: "1em" }}
+        // sx={{ marginRight: "1em" }}
       >
         Close
       </Button>
@@ -116,6 +129,7 @@ const Cart = (props) => {
           aria-label="add"
           variant="contained"
           color="slate"
+          sx={{ marginLeft: "1em" }}
         >
           Order
         </Button>
@@ -158,13 +172,25 @@ const Cart = (props) => {
   const submittingModalContent = <p>Sending order data...</p>;
   const doneSubmittingModalContent = (
     <Fragment>
-      <p>Succesfully set the order!</p>
+      <MessageWithThumbnail
+        className={classes["cart-order-success"]}
+        title={"Order Complete!"}
+        message={
+          "Success! Your order is now on its way to the kitchen. We appreciate your patronage!"
+        }
+        thumbnail={
+          <TaskAltIcon
+            color="salad"
+            sx={{ fontSize: "5em", padding: "10px", opacity: "0.5" }}
+          />
+        }
+      />
       <Button
         onClick={closeCartHandler}
         aria-label="add"
         variant="outlined"
         color="salsa"
-        sx={{ marginRight: "1em" }}
+        sx={{ display: "block", marginRight: "0", marginLeft: "auto" }}
       >
         Close
       </Button>

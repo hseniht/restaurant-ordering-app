@@ -46,15 +46,18 @@
   height: 50px;
 }
 
-.cart-no-items {
+.cart-no-items,
+.cart-order-success {
   padding: 20px;
   text-align: center;
 }
-.cart-no-items .title {
+.cart-no-items,
+.cart-order-success .title {
   color: gray;
   font-weight: bold;
 }
-.cart-no-items .message {
+.cart-no-items,
+.cart-order-success .message {
   color: darkgray;
 }
 

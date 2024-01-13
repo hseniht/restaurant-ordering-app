@@ -48,9 +48,7 @@ const Backdrop = (props) => {
 const ModalOverlay = (props) => {
   return (
     <div className={classes.modal}>
-      <div style={{ padding: "20px" }} className={classes.content}>
-        {props.children}
-      </div>
+      <div className={classes["modal-content"]}>{props.children}</div>
     </div>
   );
 };
