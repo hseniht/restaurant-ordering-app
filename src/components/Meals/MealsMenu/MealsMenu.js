@@ -16,6 +16,7 @@ import { Stack } from "@mui/system";
 import { theme } from "../../UI/palletes";
 import { CartContext } from "../../../contexts/cart-context";
 import { menuGlossary } from "../../../constants/constants";
+import { useMobileDetect } from "../../../hooks/useMobileDetect";
 
 const ICON_APPETIZER = <KebabDiningOutlinedIcon />;
 const ICON_MAINS = <RestaurantMenuOutlinedIcon />;
@@ -74,6 +75,7 @@ const Menus = ({
 export default function TabbedMenu({ list }) {
   const [value, setValue] = React.useState(0);
   const cartCtx = React.useContext(CartContext);
+  const isMobile = useMobileDetect();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -120,11 +122,14 @@ export default function TabbedMenu({ list }) {
     <Paper elevation={3} className={classes["menu-container"]}>
       <Tabs
         className={classes["menu-tabs"]}
-        centered
+        centered={!isMobile}
         value={value}
         onChange={handleChange}
         aria-label="basic tabs example"
         textColor={"inherit"}
+        variant={isMobile ? "scrollable" : "standard"}
+        allowScrollButtonsMobile={isMobile}
+        scrollButtons={isMobile}
         // textColor={theme.palette.salsa.main}
         // indicatorColor="inherit"
         TabIndicatorProps={{

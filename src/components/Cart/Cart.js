@@ -16,14 +16,14 @@ const CartEmpty = () => {
       </Typography>
       <LocalDiningIcon
         color="slate"
-        sx={{ fontSize: "5em", padding: "10px" }}
+        sx={{ fontSize: "5em", padding: "10px", opacity: "0.5" }}
       />
       <Typography
         className={classes["message"]}
         variant="caption"
         component={"p"}
       >
-        {"Looks like you havent made your choice yet"}
+        {"Looks like you haven't made your choice yet."}
       </Typography>
     </div>
   );
